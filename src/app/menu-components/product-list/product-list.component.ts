@@ -3,6 +3,7 @@ import {Observable, Subject, takeUntil} from "rxjs";
 import {BusinessData, Product} from "../../interfaces/business-data";
 import {Store} from "@ngrx/store";
 import {RootStore} from "../../interfaces/root-store";
+import {Bill} from "../../interfaces/bill.interface";
 
 @Component({
   selector: 'app-product-list',
@@ -12,10 +13,11 @@ import {RootStore} from "../../interfaces/root-store";
 export class ProductListComponent implements OnDestroy, OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
   productsToShow$: Observable<Product[]> = this.store.select(state => state.products.productsToShow);
-  bill$: Observable<{ product: Product, quantity: number }[]> = this.store.select(state => state.products.bill);
+  bill$: Observable<Bill[]> = this.store.select(state => state.products.bill);
   selectedProducts: Product[] = []
-  modalPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'topleft' | 'topright' | 'bottomleft' | 'bottomright' ="bottom";
-  modalVisible=true;
+  modalPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'topleft' | 'topright' | 'bottomleft' | 'bottomright' = "bottom";
+  billVisible = false;
+  confirmSentBill = false;
 
   constructor(private store: Store<RootStore>) {
   }
@@ -29,5 +31,18 @@ export class ProductListComponent implements OnDestroy, OnInit {
   ngOnDestroy(): void {
     this.destroy$.next(true)
     this.destroy$.unsubscribe()
+  }
+
+  onModalVisible() {
+    this.billVisible = true
+  }
+
+  onSendBill(bill: Bill[]) {
+    this.billVisible = false
+    this.confirmSentBill = true
+  }
+
+  onConfirmationDialogClose() {
+    this.confirmSentBill = false
   }
 }

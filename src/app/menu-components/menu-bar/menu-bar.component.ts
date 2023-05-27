@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {ThemeService} from "../../services/theme.service";
 import {Category} from "../../interfaces/business-data";
 import {Store} from "@ngrx/store";
 import {changeProductsToShow} from "../../actions/products.actions";
@@ -26,7 +24,12 @@ export class MenuBarComponent implements OnInit {
 
   changeMenuSelection(menuId: number) {
     this.selectedMenu = menuId;
-    this.store.dispatch(changeProductsToShow({data: this.menuList.find(it => it.id == menuId)?.products ?? []}))
+    const selectedMenuItem = this.menuList.find(it => it.id == menuId)
+    if (selectedMenuItem) {
+      this.menuList = [selectedMenuItem, ...this.menuList.filter(it => it != selectedMenuItem)]
+      this.store.dispatch(changeProductsToShow({data: selectedMenuItem.products ?? []}))
+
+    }
   }
 
 }

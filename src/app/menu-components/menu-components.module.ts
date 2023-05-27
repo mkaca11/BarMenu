@@ -10,6 +10,7 @@ import {DialogModule} from "primeng/dialog";
 import {InputNumberModule} from "primeng/inputnumber";
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
+import { BillConfirmationCardModalComponent } from './bill-confirmation-card-modal/bill-confirmation-card-modal.component';
 
 
 
@@ -20,7 +21,8 @@ import {ButtonModule} from "primeng/button";
     MenuItemComponent,
     ProductCardComponent,
     ProductListComponent,
-    BillCardModalComponent
+    BillCardModalComponent,
+    BillConfirmationCardModalComponent
   ],
   exports: [
     MenuHeaderComponent,

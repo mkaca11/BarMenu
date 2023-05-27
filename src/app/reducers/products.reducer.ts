@@ -1,11 +1,12 @@
 import {createReducer, on} from '@ngrx/store';
 import {businessDataLoadedSuccess} from "../actions/business.actions";
 import {BusinessData, Product} from "../interfaces/business-data";
-import {changeProductsToShow, deSelectProduct, selectProduct} from "../actions/products.actions";
+import {changeProductsToShow, deSelectProduct, selectProduct, updateBill} from "../actions/products.actions";
+import {Bill} from "../interfaces/bill.interface";
 
 export interface ProductsState {
   productsToShow: Product[]
-  bill: { product: Product, quantity: number }[]
+  bill: Bill[]
 }
 
 export const initialState = {
@@ -25,6 +26,9 @@ const onSelectProduct = (state: ProductsState, {data}: { data: Product }): Produ
 const onDeSelectProduct = (state: ProductsState, {data}: { data: Product }): ProductsState => {
   return {...state, bill: [...state.bill.filter(it => it.product != data)]}
 };
+const onUpdateBill = (state: ProductsState, {data}: { data: Bill[] }): ProductsState => {
+  return {...state, bill: [...data]}
+};
 export const productsReducer = createReducer(
   initialState,
   on(businessDataLoadedSuccess, onBusinessDataLoadedSuccess,
@@ -32,5 +36,6 @@ export const productsReducer = createReducer(
   on(changeProductsToShow, onChangeProductsToShow,
   ),
   on(selectProduct, onSelectProduct),
-  on(deSelectProduct, onDeSelectProduct)
+  on(deSelectProduct, onDeSelectProduct),
+  on(updateBill,onUpdateBill)
 );

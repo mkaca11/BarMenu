@@ -1,9 +1,9 @@
 <div *ngIf="bill$|async as bill">
-  <div *ngFor="let prod of bill" class="items flex justify-content-between align-content-between">
-    <span class="w-7">
+  <div *ngFor="let prod of bill" class="items flex justify-content-between align-content-between m-2">
+    <span class="w-6">
       {{prod.product.name}}
     </span>
-    <span class="w-2 p-2" >
+    <span class="w-3 p-2" >
       <span class="quantity" (click)="increaseQuantity(prod)">
       {{prod.quantity}}
         </span>
@@ -13,8 +13,12 @@
     </span>
 
   </div>
-  <div class="total flex justify-content-between align-content-between">
+  <div class="total flex justify-content-between align-content-between border-top-1">
     <span class="flex w-9">Totali</span>
     <span class="flex w-3">{{total}}</span>
   </div>
+  <div class="total flex justify-content-center align-content-center mt-5">
+      <p-button styleClass="p-button-raised p-button-danger" (onClick)="sendBill()">Dergo Fature</p-button>
+  </div>
+
 </div>

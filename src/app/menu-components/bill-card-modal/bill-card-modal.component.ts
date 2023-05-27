@@ -1,8 +1,10 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {Observable, Subject, takeUntil} from "rxjs";
 import {Product} from "../../interfaces/business-data";
 import {Store} from "@ngrx/store";
 import {RootStore} from "../../interfaces/root-store";
+import {Bill} from "../../interfaces/bill.interface";
+import {updateBill} from "../../actions/products.actions";
 
 @Component({
   selector: 'app-bill-card-modal',
@@ -11,9 +13,10 @@ import {RootStore} from "../../interfaces/root-store";
 })
 export class BillCardModalComponent implements OnDestroy, OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
-  bill$: Observable<{ product: Product, quantity: number }[]> = this.store.select(state => state.products.bill);
+  bill$: Observable<Bill[]> = this.store.select(state => state.products.bill);
   total = 0
-  bill: { product: Product, quantity: number }[] = []
+  bill: Bill[] = []
+  @Output() onSendBill = new EventEmitter<Bill[]>();
 
   constructor(private store: Store<RootStore>) {
   }
@@ -21,9 +24,11 @@ export class BillCardModalComponent implements OnDestroy, OnInit {
   ngOnInit() {
     this.bill$.pipe(takeUntil(this.destroy$)).subscribe(data => {
       this.bill = data
-      if(data.length==0)
+      if (data.length == 0) {
         this.total = 0
-      this.total = data.map(it => it.quantity * it.product.unitPrice).reduce((a, b) => a + b)
+      } else {
+        this.total = data.map(it => it.quantity * it.product.unitPrice).reduce((a, b) => a + b)
+      }
     })
   }
 
@@ -33,7 +38,19 @@ export class BillCardModalComponent implements OnDestroy, OnInit {
   }
 
   increaseQuantity(prod: { product: Product; quantity: number }) {
+    this.store.dispatch(updateBill({
+      data: this.bill.map(it => {
+        if (it == prod) {
+          return {product: prod.product, quantity: prod.quantity + 1}
+        }
+        return it
+      })
+    }))
 
+  }
 
+  sendBill() {
+    this.onSendBill.next(this.bill)
+    this.store.dispatch(updateBill({data: []}))
   }
 }
