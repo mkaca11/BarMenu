@@ -1,7 +1,9 @@
-$light-value-map:(
+$light-value-map: (
   name: "light",
   text-color: #333333,
   primary: #F44242,
+  color-opacity: 0.8,
+  selected-color-opacity: 1,
   component-background-color: white,
   background-color0:#8b98d7,
   background-color1:#f180eb,

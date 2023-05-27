@@ -1,2 +1,6 @@
+<div  [ngClass]="{'darkMode': isDarkTheme | async}">
 <app-menu-header></app-menu-header>
+<app-menu-bar></app-menu-bar>
+<app-product-list></app-product-list>
 <router-outlet></router-outlet>
+</div>

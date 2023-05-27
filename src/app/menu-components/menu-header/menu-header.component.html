@@ -1,4 +1,4 @@
-<div class="w-12" [ngClass]="{'darkMode': isDarkTheme | async}">
+<div class="w-12 app-background">
   <div class="card p-1 flex flex-row justify-content-between  align-content-between  card-container menu-header">
     <div class="flex  card">
       <div class="flex flex-row">
@@ -13,10 +13,10 @@
       </div>
     </div>
 
-    <div class="p-1 flex card  align-items-center justify-content-center" (click)="toggleDarkTheme()">
+    <div class="p-1 flex card  align-items-center justify-content-center toggle" (click)="toggleDarkTheme()">
       <img
-        *ngIf="!(isDarkTheme | async)" src="assets/toggleTheme.svg" alt="Toggle" >
- <img
-        *ngIf="(isDarkTheme | async)" src="assets/darkThemeToggle.svg" alt="Toggle" ></div>
+        *ngIf="!(isDarkTheme | async)" src="assets/toggleTheme.svg" alt="Toggle">
+      <img
+        *ngIf="(isDarkTheme | async)" src="assets/darkThemeToggle.svg" alt="Toggle"></div>
   </div>
 </div>

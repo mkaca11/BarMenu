@@ -1,0 +1,15 @@
+.horizontal-scroll {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.bar {
+  background-color: #999999;
+}

@@ -7,7 +7,7 @@ html, body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Helvetica, "Helvetica Neue", sans-serif;
 }
 
 
@@ -26,38 +26,54 @@ body {
   .text {
     color: map-get-value($map, text-color)!important;
   }
-  *{
+  .app-background {
     background-color: map-get-value($map,component-background-color)
   }
+  .app-text-primary{
+    color:map-get-value($map,primary)
+  }
   .color0{
-    background-color: map-get-value($map,background-color0)
+    background-color: map-get-value($map,background-color0);
+    opacity: map-get-value($map,color-opacity);
   }
   .color1{
-    background-color: map-get-value($map,background-color1)
+    background-color: map-get-value($map,background-color1);
+    opacity: map-get-value($map,color-opacity);
   }
   .color2{
-    background-color: map-get-value($map,background-color2)
+    background-color: map-get-value($map,background-color2);
+    opacity: map-get-value($map,color-opacity);
   }
   .color3{
-    background-color: map-get-value($map,background-color3)
+    background-color: map-get-value($map,background-color3);
+    opacity: map-get-value($map,color-opacity);
   }
   .color4{
-    background-color: map-get-value($map,background-color4)
+    background-color: map-get-value($map,background-color4);
+    opacity: map-get-value($map,color-opacity);
   }
   .color5{
-    background-color: map-get-value($map,background-color5)
+    background-color: map-get-value($map,background-color5);
+    opacity: map-get-value($map,color-opacity);
   }
   .color6{
-    background-color: map-get-value($map,background-color6)
+    background-color: map-get-value($map,background-color6);
+    opacity: map-get-value($map,color-opacity);
   }
   .color7{
-    background-color: map-get-value($map,background-color7)
+    background-color: map-get-value($map,background-color7);
+    opacity: map-get-value($map,color-opacity);
   }
   .color8{
-    background-color: map-get-value($map,background-color8)
+    background-color: map-get-value($map,background-color8);
+    opacity: map-get-value($map,color-opacity);
   }
   .color9{
-    background-color: map-get-value($map,background-color9)
+    background-color: map-get-value($map,background-color9);
+    opacity: map-get-value($map,color-opacity);
+  }
+  .selected{
+    opacity: map-get-value($map,selected-color-opacity);
   }
 }
 
