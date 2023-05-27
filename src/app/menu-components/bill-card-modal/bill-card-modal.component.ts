@@ -1,33 +1,39 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subject, takeUntil} from "rxjs";
-import {BusinessData, Product} from "../../interfaces/business-data";
+import {Product} from "../../interfaces/business-data";
 import {Store} from "@ngrx/store";
 import {RootStore} from "../../interfaces/root-store";
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'app-bill-card-modal',
+  templateUrl: './bill-card-modal.component.html',
+  styleUrls: ['./bill-card-modal.component.scss']
 })
-export class ProductListComponent implements OnDestroy, OnInit {
+export class BillCardModalComponent implements OnDestroy, OnInit {
   destroy$: Subject<boolean> = new Subject<boolean>();
-  productsToShow$: Observable<Product[]> = this.store.select(state => state.products.productsToShow);
   bill$: Observable<{ product: Product, quantity: number }[]> = this.store.select(state => state.products.bill);
-  selectedProducts: Product[] = []
-  modalPosition: 'center' | 'top' | 'bottom' | 'left' | 'right' | 'topleft' | 'topright' | 'bottomleft' | 'bottomright' ="bottom";
-  modalVisible=true;
+  total = 0
+  bill: { product: Product, quantity: number }[] = []
 
   constructor(private store: Store<RootStore>) {
   }
 
   ngOnInit() {
     this.bill$.pipe(takeUntil(this.destroy$)).subscribe(data => {
-      this.selectedProducts = data.map(d => d.product)
+      this.bill = data
+      if(data.length==0)
+        this.total = 0
+      this.total = data.map(it => it.quantity * it.product.unitPrice).reduce((a, b) => a + b)
     })
   }
 
   ngOnDestroy(): void {
     this.destroy$.next(true)
     this.destroy$.unsubscribe()
+  }
+
+  increaseQuantity(prod: { product: Product; quantity: number }) {
+
+
   }
 }

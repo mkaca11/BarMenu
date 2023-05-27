@@ -1,6 +1,11 @@
-<div  [ngClass]="{'darkMode': isDarkTheme | async}">
-<app-menu-header></app-menu-header>
-<app-menu-bar></app-menu-bar>
-<app-product-list></app-product-list>
-<router-outlet></router-outlet>
+<div *ngIf="loadingData$|async"
+     class="flex justify-content-center align-content-center">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div *ngIf="businessData$|async as businessData" [ngClass]="{'darkMode': isDarkTheme | async}">
+  <app-menu-header [brandImage]="'data:image/jpeg;base64,'+businessData.logo" [companyName]="businessData.businessName"
+                   [slogan]="businessData.nuis"></app-menu-header>
+  <app-menu-bar [menuList]="businessData.categories"></app-menu-bar>
+  <app-product-list></app-product-list>
+    <img class="w-12 m-0 p-0" width="100%" src="assets/footer.svg">
 </div>

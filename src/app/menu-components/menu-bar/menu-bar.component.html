@@ -1,22 +1,8 @@
 <div class="w-12 aaa">
-<table class=" horizontal-scroll bar">
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-  <td class="p-1"><app-menu-item [menuItemName]="'aaaaaaaaaaa'"></app-menu-item></td>
-</table>
+  <table class=" horizontal-scroll bar">
+    <td *ngFor="let menu of menuList" class="p-1">
+      <app-menu-item (click)="changeMenuSelection(menu.id)" [selected]="selectedMenu==menu.id"
+                     [menuItemName]="menu.name"></app-menu-item>
+    </td>
+  </table>
 </div>

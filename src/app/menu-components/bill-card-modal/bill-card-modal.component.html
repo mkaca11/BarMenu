@@ -1,0 +1,20 @@
+<div *ngIf="bill$|async as bill">
+  <div *ngFor="let prod of bill" class="items flex justify-content-between align-content-between">
+    <span class="w-7">
+      {{prod.product.name}}
+    </span>
+    <span class="w-2 p-2" >
+      <span class="quantity" (click)="increaseQuantity(prod)">
+      {{prod.quantity}}
+        </span>
+    </span>
+    <span class="w-3">
+      {{prod.quantity * prod.product.unitPrice}}
+    </span>
+
+  </div>
+  <div class="total flex justify-content-between align-content-between">
+    <span class="flex w-9">Totali</span>
+    <span class="flex w-3">{{total}}</span>
+  </div>
+</div>

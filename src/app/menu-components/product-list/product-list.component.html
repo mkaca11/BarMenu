@@ -1,8 +1,12 @@
-<div class="flex flex-wrap">
-  <span class="w-6 md:w-3">
-  <app-product-card></app-product-card>
+<div class="relative">
+  <div class="flex flex-wrap">
+  <span *ngFor="let product of productsToShow$|async; let i = index" class="w-6 md:w-3">
+  <app-product-card [product]="product" [index]="i" [selected]="selectedProducts.includes(product)"></app-product-card>
     </span>
-  <span class="w-6 md:w-3">
-  <app-product-card></app-product-card>
-    </span>
+  </div>
+  <span *ngIf="selectedProducts.length>0" class="bill text-color"><span>{{selectedProducts.length}}</span></span>
+
+  <p-dialog [(visible)]="modalVisible" [position]="modalPosition" [style]="{width: '80vw'}">
+    <app-bill-card-modal></app-bill-card-modal>
+</p-dialog>
 </div>

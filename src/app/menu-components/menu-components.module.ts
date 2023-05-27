@@ -5,6 +5,11 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { BillCardModalComponent } from './bill-card-modal/bill-card-modal.component';
+import {DialogModule} from "primeng/dialog";
+import {InputNumberModule} from "primeng/inputnumber";
+import {FormsModule} from "@angular/forms";
+import {ButtonModule} from "primeng/button";
 
 
 
@@ -14,7 +19,8 @@ import { ProductListComponent } from './product-list/product-list.component';
     MenuBarComponent,
     MenuItemComponent,
     ProductCardComponent,
-    ProductListComponent
+    ProductListComponent,
+    BillCardModalComponent
   ],
   exports: [
     MenuHeaderComponent,
@@ -23,7 +29,11 @@ import { ProductListComponent } from './product-list/product-list.component';
   ],
   imports: [
     CommonModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    DialogModule,
+    InputNumberModule,
+    ButtonModule,
+    FormsModule
   ]
 })
 export class MenuComponentsModule { }

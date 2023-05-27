@@ -71,7 +71,8 @@
               "browserTarget": "BarMenu:build:production"
             },
             "development": {
-              "browserTarget": "BarMenu:build:development"
+              "browserTarget": "BarMenu:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

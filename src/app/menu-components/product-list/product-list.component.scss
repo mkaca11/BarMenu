@@ -1,0 +1,19 @@
+.bill {
+  position: fixed;
+  width: 41.33px;
+  background: red;
+  height: 57px;
+  cursor: pointer;
+  right: 5%;
+  bottom: 5%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.bill span{
+  margin:auto;
+  margin-top:50%;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+  color: white;
+}

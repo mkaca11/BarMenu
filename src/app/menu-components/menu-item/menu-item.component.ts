@@ -10,5 +10,6 @@ import {ThemeService} from "../../services/theme.service";
 export class MenuItemComponent {
 
   @Input() menuItemName: string = "";
+  @Input() selected: boolean = false;
 
 }

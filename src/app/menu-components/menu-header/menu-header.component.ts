@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ThemeService} from "../../services/theme.service";
 import {Observable, take} from "rxjs";
 
@@ -8,9 +8,11 @@ import {Observable, take} from "rxjs";
   styleUrls: ['./menu-header.component.scss']
 })
 export class MenuHeaderComponent implements OnInit {
-
+  @Input()
   brandImage: string = "https://mycodelesswebsite.com/wp-content/uploads/2020/10/Nom-Nom-Coffee-Shop-Website-Example.jpg";
+  @Input()
   companyName: string = "Company Name";
+  @Input()
   slogan: string = "slogan";
   isDarkTheme?: Observable<boolean>;
   darkTheme = false
