@@ -1,1 +1,69 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+@import "./theme/dark.scss";
+@import "./theme/light.scss";
+
+@function map-get-value($map, $key) {
+  @if map-has-key($map, $key) {
+    @return map-get($map, $key);
+  } @else {
+    @error "ERROR: Specified key #{$key} does not exist in the mapping #{map-get($map,name)}";
+  }
+}
+
+@mixin set-theme($map) {
+  .text {
+    color: map-get-value($map, text-color)!important;
+  }
+  *{
+    background-color: map-get-value($map,component-background-color)
+  }
+  .color0{
+    background-color: map-get-value($map,background-color0)
+  }
+  .color1{
+    background-color: map-get-value($map,background-color1)
+  }
+  .color2{
+    background-color: map-get-value($map,background-color2)
+  }
+  .color3{
+    background-color: map-get-value($map,background-color3)
+  }
+  .color4{
+    background-color: map-get-value($map,background-color4)
+  }
+  .color5{
+    background-color: map-get-value($map,background-color5)
+  }
+  .color6{
+    background-color: map-get-value($map,background-color6)
+  }
+  .color7{
+    background-color: map-get-value($map,background-color7)
+  }
+  .color8{
+    background-color: map-get-value($map,background-color8)
+  }
+  .color9{
+    background-color: map-get-value($map,background-color9)
+  }
+}
+
+@include set-theme($light-value-map);
+
+.darkMode {
+  @include set-theme($dark-value-map);
+}
+@import 'primeflex/primeflex.scss';
