@@ -9,7 +9,7 @@ import {Observable, take} from "rxjs";
 })
 export class MenuHeaderComponent implements OnInit {
   @Input()
-  brandImage: string = "https://mycodelesswebsite.com/wp-content/uploads/2020/10/Nom-Nom-Coffee-Shop-Website-Example.jpg";
+  brandImage: string = "";
   @Input()
   companyName: string = "Company Name";
   @Input()
@@ -18,7 +18,7 @@ export class MenuHeaderComponent implements OnInit {
   darkTheme = false
 
   constructor(private themeService: ThemeService) {
-    const storedTheme = localStorage.getItem("dark")
+    const storedTheme = localStorage.getItem("dark") //check if dark property is stored in localstorage and initialize darkMode variable
     if (storedTheme) {
       this.darkTheme = storedTheme == "true"
     }

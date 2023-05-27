@@ -3,7 +3,6 @@ import {Observable} from "rxjs";
 import {ThemeService} from "./services/theme.service";
 import {BusinessData} from "./interfaces/business-data";
 import {Store} from "@ngrx/store";
-import {BusinessState} from "./reducers/business.reducer";
 import {RootStore} from "./interfaces/root-store";
 import {loadBusinessData} from "./actions/business.actions";
 
@@ -17,7 +16,6 @@ export class AppComponent implements OnInit {
   title = 'BarMenu';
   businessData$: Observable<BusinessData | null> = this.store.select(state => state.business.data);
   loadingData$: Observable<boolean> = this.store.select(state => state.business.loading);
-
   isDarkTheme?: Observable<boolean>;
 
   constructor(private themeService: ThemeService, private store: Store<RootStore>) {

@@ -18,7 +18,6 @@ export class ProductCardComponent {
   @Input()
   selected: boolean = false
 
-
   constructor(private store: Store) {
   }
 

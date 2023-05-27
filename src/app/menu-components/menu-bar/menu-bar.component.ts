@@ -26,7 +26,10 @@ export class MenuBarComponent implements OnInit {
     this.selectedMenu = menuId;
     const selectedMenuItem = this.menuList.find(it => it.id == menuId)
     if (selectedMenuItem) {
+      //update menu list to put the selected menuitem at the beginning
       this.menuList = [selectedMenuItem, ...this.menuList.filter(it => it != selectedMenuItem)]
+
+      //update the productsToShow state property showing only the products of the selected menu
       this.store.dispatch(changeProductsToShow({data: selectedMenuItem.products ?? []}))
 
     }

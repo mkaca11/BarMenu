@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MenuComponentsModule} from "./menu-components/menu-components.module";
@@ -21,13 +20,12 @@ import {DialogModule} from 'primeng/dialog';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MenuComponentsModule,
     ProgressSpinnerModule,
     DialogModule,
-    StoreModule.forRoot({business: businessReducer, products: productsReducer}),
-    EffectsModule.forRoot([businessEffects])
+    StoreModule.forRoot({business: businessReducer, products: productsReducer}),//initializing ngrx root state using the business and products reducers
+    EffectsModule.forRoot([businessEffects]) //defining businessEffects (loadBusinessData effect)
   ],
   providers: [],
   bootstrap: [AppComponent]

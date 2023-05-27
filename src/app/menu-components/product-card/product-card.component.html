@@ -1,3 +1,4 @@
+<!--Add color0 - color9 class to the card by using the index and finding its mod10 so for ex index 16 will return color6 -->
 <div *ngIf="product" (click)="toggleSelected()" class="productCard {{'color'+index%10}} " [ngClass]="{'selected':selected}">
   <span class="priceTag"><span class="font-bold app-text-primary">{{product.unitPrice}}</span> &nbsp;<span
     class="text font-light">Leke</span></span>

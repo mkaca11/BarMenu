@@ -27,6 +27,7 @@ export class BillCardModalComponent implements OnDestroy, OnInit {
       if (data.length == 0) {
         this.total = 0
       } else {
+        //reducing array and finding the total of the bill
         this.total = data.map(it => it.quantity * it.product.unitPrice).reduce((a, b) => a + b)
       }
     })
@@ -37,6 +38,8 @@ export class BillCardModalComponent implements OnDestroy, OnInit {
     this.destroy$.unsubscribe()
   }
 
+  //on quantity click increase quantity that is stored in state for that product
+  //and updating the bill state data
   increaseQuantity(prod: { product: Product; quantity: number }) {
     this.store.dispatch(updateBill({
       data: this.bill.map(it => {
@@ -48,7 +51,7 @@ export class BillCardModalComponent implements OnDestroy, OnInit {
     }))
 
   }
-
+  //updating bill state data to an empty array after the bill is sent
   sendBill() {
     this.onSendBill.next(this.bill)
     this.store.dispatch(updateBill({data: []}))

@@ -2,6 +2,7 @@
      class="flex justify-content-center align-content-center">
   <p-progressSpinner></p-progressSpinner>
 </div>
+<!--Wrap everything in a div and add class darkMode if themeService returns true for darkMode-->
 <div *ngIf="businessData$|async as businessData" [ngClass]="{'darkMode': isDarkTheme | async}">
   <app-menu-header [brandImage]="'data:image/jpeg;base64,'+businessData.logo" [companyName]="businessData.businessName"
                    [slogan]="businessData.nuis"></app-menu-header>
