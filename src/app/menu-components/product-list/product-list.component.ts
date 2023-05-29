@@ -45,4 +45,8 @@ export class ProductListComponent implements OnDestroy, OnInit {
   onConfirmationDialogClose() {
     this.confirmSentBill = false
   }
+
+  closeBillModal() {
+    this.billVisible = false
+  }
 }

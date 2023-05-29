@@ -1,8 +1,11 @@
-<div class="w-12 aaa">
-  <table class=" horizontal-scroll bar">
-    <td *ngFor="let menu of menuList" class="p-1">
-      <app-menu-item (click)="changeMenuSelection(menu.id)" [selected]="selectedMenu==menu.id"
+<div class="w-12 ">
+
+    <cdk-virtual-scroll-viewport [itemSize]="35" [orientation]="'horizontal'"
+                                 class=" scroll horizontal-scroll bar viewport p-2">
+    <span *cdkVirtualFor="let menu of menuList" class="item p-2 w-3" id="menu-{{menu.id}}">
+      <app-menu-item   (click)="changeMenuSelection(menu.id)" [selected]="selectedMenu==menu.id"
                      [menuItemName]="menu.name"></app-menu-item>
-    </td>
-  </table>
+    </span>
+    </cdk-virtual-scroll-viewport>
+
 </div>

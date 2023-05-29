@@ -7,8 +7,8 @@
   <span (click)="onModalVisible()" *ngIf="selectedProducts.length>0"
         class="bill text-color"><span>{{selectedProducts.length}}</span></span>
 
-  <p-dialog [(visible)]="billVisible" [position]="modalPosition" [style]="{width: '90vw'}">
-    <app-bill-card-modal (onSendBill)="onSendBill($event)"></app-bill-card-modal>
+  <p-dialog [closeOnEscape]="true" [dismissableMask]="true" [modal]="true" [closable]="true" [showHeader]="false" [contentStyleClass]="'w-12 p-3'" [keepInViewport]="false" [(visible)]="billVisible" [position]="modalPosition" [style]="{width: '100vw'}">
+    <app-bill-card-modal (onNoItems)="closeBillModal()" (onSendBill)="onSendBill($event)"></app-bill-card-modal>
   </p-dialog>
   <p-dialog [(visible)]="confirmSentBill" [style]="{width: '60vw'}">
     <app-bill-confirmation-card-modal (onClose)="onConfirmationDialogClose()"></app-bill-confirmation-card-modal>

@@ -24,7 +24,7 @@ body {
 
 @mixin set-theme($map) {
   .text {
-    color: map-get-value($map, text-color)!important;
+    color: map-get-value($map, text-color);
   }
   .app-background {
     background-color: map-get-value($map,component-background-color)
@@ -82,4 +82,5 @@ body {
 .darkMode {
   @include set-theme($dark-value-map);
 }
+
 @import 'primeflex/primeflex.scss';

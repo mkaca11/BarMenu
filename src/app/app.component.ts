@@ -16,13 +16,12 @@ export class AppComponent implements OnInit {
   title = 'BarMenu';
   businessData$: Observable<BusinessData | null> = this.store.select(state => state.business.data);
   loadingData$: Observable<boolean> = this.store.select(state => state.business.loading);
-  isDarkTheme?: Observable<boolean>;
+  isDarkTheme?: Observable<boolean> = this.themeService.isDarkTheme;
 
   constructor(private themeService: ThemeService, private store: Store<RootStore>) {
   }
 
   ngOnInit(): void {
-    this.isDarkTheme = this.themeService.isDarkTheme
     this.store.dispatch(loadBusinessData())
   }
 }

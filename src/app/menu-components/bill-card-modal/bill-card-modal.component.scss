@@ -3,3 +3,22 @@
   cursor: pointer;
   background-color: lightgray;
 }
+
+:host ::ng-deep .p-inputnumber
+.p-inputnumber-input:enabled:focus,
+:host ::ng-deep .p-inputnumber
+.p-inputnumber-input{
+  width: 40px;
+}
+:host ::ng-deep .p-inputnumber
+.p-inputnumber-input:enabled:focus,
+:host ::ng-deep .p-inputnumber
+.p-inputnumber-input,
+:host ::ng-deep .p-inputnumber
+.p-inputnumber-button{
+  height:30px;
+}
+:host ::ng-deep .p-inputnumber
+.p-inputnumber-button{
+  width:30px;
+}

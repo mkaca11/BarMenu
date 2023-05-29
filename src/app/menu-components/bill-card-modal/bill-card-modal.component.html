@@ -1,23 +1,23 @@
-<div *ngIf="bill$|async as bill">
-  <div *ngFor="let prod of bill" class="items flex justify-content-between align-content-between m-2">
-    <span class="w-6">
+<div *ngIf="bill">
+  <div *ngFor="let prod of bill" class="w-12 items flex justify-content-between align-content-between m-2">
+    <span class="w-5">
       {{prod.product.name}}
     </span>
-    <span class="w-3 p-2" >
-      <span class="quantity" (click)="increaseQuantity(prod)">
-      {{prod.quantity}}
-        </span>
+    <span class="w-4 " >
+        <p-inputNumber (ngModelChange)="onQuantityChange(prod,$event)"  [showButtons]="true" inputId="stacked" [buttonLayout]="'horizontal'"
+                        [(ngModel)]="prod.quantity">
+    </p-inputNumber>
     </span>
     <span class="w-3">
       {{prod.quantity * prod.product.unitPrice}}
     </span>
 
   </div>
-  <div class="total flex justify-content-between align-content-between border-top-1">
+  <div class="total flex justify-content-between align-content-between border-top-1  m-2 mt-5 w-12">
     <span class="flex w-9">Totali</span>
     <span class="flex w-3">{{total}}</span>
   </div>
-  <div class="total flex justify-content-center align-content-center mt-5">
+  <div class="total flex justify-content-center align-content-center ">
       <p-button styleClass="p-button-raised p-button-danger" (onClick)="sendBill()">Dergo Fature</p-button>
   </div>
 

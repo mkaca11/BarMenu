@@ -1,9 +1,17 @@
 .horizontal-scroll {
-  display: block;
   overflow-x: auto;
   white-space: nowrap;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.scroll ::ng-deep .cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .horizontal-scroll::-webkit-scrollbar {

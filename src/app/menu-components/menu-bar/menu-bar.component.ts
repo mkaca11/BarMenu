@@ -1,7 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Category} from "../../interfaces/business-data";
 import {Store} from "@ngrx/store";
 import {changeProductsToShow} from "../../actions/products.actions";
+import {CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import {of} from "rxjs";
 
 @Component({
   selector: 'app-menu-bar',
@@ -24,10 +26,13 @@ export class MenuBarComponent implements OnInit {
 
   changeMenuSelection(menuId: number) {
     this.selectedMenu = menuId;
+    const el = document.getElementById('menu-'+menuId)
+    el?.scrollIntoView({
+      behavior: 'smooth', block: 'nearest', inline: 'start'
+    });
     const selectedMenuItem = this.menuList.find(it => it.id == menuId)
     if (selectedMenuItem) {
       //update menu list to put the selected menuitem at the beginning
-      this.menuList = [selectedMenuItem, ...this.menuList.filter(it => it != selectedMenuItem)]
 
       //update the productsToShow state property showing only the products of the selected menu
       this.store.dispatch(changeProductsToShow({data: selectedMenuItem.products ?? []}))

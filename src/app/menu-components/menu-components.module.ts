@@ -11,6 +11,7 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import { BillConfirmationCardModalComponent } from './bill-confirmation-card-modal/bill-confirmation-card-modal.component';
+import { CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
 
 
 
@@ -35,7 +36,8 @@ import { BillConfirmationCardModalComponent } from './bill-confirmation-card-mod
     DialogModule,
     InputNumberModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    CdkVirtualScrollViewport,
   ]
 })
 export class MenuComponentsModule { }
