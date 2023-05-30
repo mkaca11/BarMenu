@@ -11,7 +11,12 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import { BillConfirmationCardModalComponent } from './bill-confirmation-card-modal/bill-confirmation-card-modal.component';
-import { CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
+import {
+  CdkFixedSizeVirtualScroll,
+  CdkVirtualForOf,
+  CdkVirtualScrollViewport
+} from "@angular/cdk/scrolling";
+import {ScrollingModule} from "@angular/cdk-experimental/scrolling";
 
 
 
@@ -38,6 +43,9 @@ import { CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
     ButtonModule,
     FormsModule,
     CdkVirtualScrollViewport,
+    CdkFixedSizeVirtualScroll,
+    CdkVirtualForOf,
+    ScrollingModule
   ]
 })
 export class MenuComponentsModule { }
